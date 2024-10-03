@@ -1,8 +1,9 @@
+
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
-int isIPv4(char endereco[]) {       // Função para verificar se a string é um IPv4
+int IPv4(char endereco[]) {       // Função para verificar se a string é um IPv4
     int numeros = 0, pontos = 0, i, tamanho = strlen(endereco);
     for (i = 0; i < tamanho; i++) {
         if (isdigit(endereco[i])) {
@@ -16,7 +17,7 @@ int isIPv4(char endereco[]) {       // Função para verificar se a string é um
     return (pontos == 3 && numeros > 0);            // Deve haver exatamente 3 pontos e alguns números
 }
 
-int isIPv6(char endereco[]) {           // Função para verificar se a string é um IPv6
+int IPv6(char endereco[]) {           // Função para verificar se a string é um IPv6
     int hexadecimais = 0, dois_pontos = 0, i, tamanho = strlen(endereco);
     for (i = 0; i < tamanho; i++) {
         if (isxdigit(endereco[i])) {
@@ -38,18 +39,16 @@ int main(){
     while (continuar == 1) {
         printf("Informe o endereço IP: ");         // Lê o endereço IP
         scanf("%s", endereco);
-        if (isIPv4(endereco)) {                 // Verifica se é IPv4 ou IPv6
+        if (IPv4(endereco)) {                 // Verifica se é IPv4 ou IPv6
             printf("O endereço %s é IPv4.\n", endereco);
-        } else if (isIPv6(endereco)) {
+        } else if (IPv6(endereco)) {
             printf("O endereço %s é IPv6.\n", endereco);
         } else {
             printf("O endereço %s informado não é válido.\n", endereco);
         }
-        printf("Para verificar outro endereco, digite 1. Para sair, digite 0.\n");          // Pergunta se o usuário quer verificar outro endereço
+        printf("\n\nPara verificar outro endereco, digite 1. Para sair, digite 0.\n\n");          // Pergunta se o usuário quer verificar outro endereço
         scanf("%d", &continuar);
     }
     return 0;
 }
-
-
 
